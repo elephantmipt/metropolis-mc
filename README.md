@@ -1,2 +1,3 @@
 # metropolis-mc
-sampling from Boltzman distribution
+
+Some examples of applying mcmc algorithms for statistical physics. 
