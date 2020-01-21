@@ -1,0 +1,144 @@
+\documentclass[12pt]{report}
+\usepackage[a4paper]{geometry}
+                		% See geometry.pdf to learn the layout options. There are lots.
+\geometry{a4paper}
+\usepackage{listings}
+\usepackage[cm]{fullpage}
+\usepackage{layout}
+\usepackage{amsthm}
+\usepackage{amssymb,amsmath,amsfonts,latexsym,dsfont}
+
+\usepackage{ upgreek }
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+\usepackage[warn]{mathtext}
+\usepackage[T1,T2A]{fontenc}
+\usepackage{titlesec, blindtext, color}
+\definecolor{gray75}{gray}{0.75}
+\newcommand{\hsp}{\hspace{20pt}}
+\usepackage[utf8]{inputenc}
+\usepackage{fancyhdr}
+\usepackage[parfill]{parskip}
+\usepackage[english,bulgarian,ukrainian,russian]{babel}
+\titleformat{\section}[block]{\color{black}\Large\bfseries\filcenter}{}{1em}{}
+\titleformat{\chapter}[hang]{\Huge\bfseries}{\thechapter\hsp\textcolor{gray75}{|}\hsp}{0pt}{\Huge\bfseries}
+\setcounter{secnumdepth}{0}
+\renewcommand{\le}{\leqslant} 
+\renewcommand{\ge}{\geqslant }
+\DeclareMathOperator{\sign}{sign}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\rg}{rg}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\cov}{cov}
+\DeclareMathOperator{\proj}{proj}
+
+           		% ... or a4paper or a5paper or ... 
+%\geometry{landscape}                		% Activate for rotated page geometry
+%\usepackage[parfill]{parskip}    		% Activate to begin paragraphs with an empty line rather than an indent
+\ifx\pdfoutput\undefined
+\usepackage{graphicx}
+\else
+\usepackage[pdftex]{graphicx}
+\lstset{language=C++}
+\usepackage{pgffor}
+\newcounter{SortListTotal}
+\newcommand{\sortitem}[2]{\expandafter\def\csname SortListItem#1\endcsname{#2}\stepcounter{SortListTotal}}
+\newcommand{\printsortlist}{\foreach\currentlistitem in{1,2,...,\value{SortListTotal}}{\item[\currentlistitem]\csname SortListItem\currentlistitem\endcsname}\setcounter{SortListTotal}{0}}
+\newcommand\setItemnumber[1]{\setcounter{enumi}{\numexpr#1-1\relax}}
+
+\title{Метод Монте-Карло для моделирования ферромагнетиков}
+\author{Никита Балаганский, Артем Ямалутдинов}
+\date{\today}
+
+\usepackage{natbib}
+\usepackage{graphicx}
+\renewenvironment{proof}{{\bfseries Доказательство:}}{$\square$\\\\}
+\newenvironment{solution}{{\bfseries Решение:}}{$\square$\\\\}
+\newtheorem{theorem}{Теорема}
+\newtheorem{lemma}{Лемма}
+\newtheorem{proposition}{Утверждение}
+\newtheorem{corollary}{Следствие}
+\theoremstyle{definition}
+\newtheorem{definition}{Определение}
+\newtheorem{notation}{Обозначение}
+\newtheorem{example}{Пример}
+\newtheorem{problem}{Задача}
+\newtheorem{sense}{Смысл}
+\newtheorem{remark}{Замечание}
+\newcommand{\vect}[1]{\boldsymbol{#1}}
+
+\begin{document}
+\maketitle
+\fancyhead[C]{field}
+\fancyfoot[C]{МФТИ}%
+\thispagestyle{fancy}
+\newpage
+\chapter{1. Введение}
+\section{1.1. Ферромагнетизм}
+\emph{Ферромагнетиками} называются твердые тела, которые могут обладать \emph{спонтанной намагниченностью}, т. е. намагничены уже в отсутствие магнитного поля.
+Типичными представителями ферромагнетиков являются железо, кобальт, никель и многие их сплавы. Ферромагнетизмом обладают многие редкоземельные элементы при пониженной температуре.
+
+Намагниченность ферромагнетиков объясняется тем, что атомы ферромагнетика обладают магнитными моментами и взаимодействуют между собой с силами, зависящими от угла между этими моментами.
+Эти силы стремятся установить магнитные моменты соседних атомов параллельно друг другу.
+
+\section{1.2. Модель Изинга}
+Модель Изинга --- одна из основных моделей, описывающая поведение магнитных моментов 
+в атомах ферромагнетика выше точки Кюри $T_C$. В данной модели каждой вершине кристаллической решетки ставится в соответствие число $+1$ или $-1$, 
+отвечаюее за противоположные направления магнитного момента. Это число называется \emph{спином}. Тогда в отсутствие внешнего магнитного поля гамильтониан получившейся системы можно записать в виде
+\begin{equation}
+    \mathcal{H} = -J\sum_{\langle i, j \rangle}s_is_j,
+\end{equation}
+где $\langle i, j \rangle$ означает суммирование по соседним элементам,  $J > 0$ --- энергия взаимодействия соседних спинов (считаем ее одинаковой для всех пар),
+$s_i, s_j$ --- спины.
+
+При температуре $T_C$ система испытывает \emph{фазовый переход второго рода}.
+
+Покажем, что если кристаллическая решетка одномерная, то фазовый переход в ней невозможен, т.е при любых температурах
+упорядоченное состояние энергетически невыгодно.
+Для этого запишем \emph{свободную энергию системы}
+\begin{equation}
+    F = E - TS.
+\end{equation}
+Здесь  $E$ --- энергия, $S$ --- энтропия системы. Упорядоченное состояние будет устойчиво тогда и только тогда, когда
+при переходе в него $\Delta F > 0$.
+
+Изменим спины таким образом, чтобы в системе появился упорядоченный домен. Тогда энергия увеличится на величину $4J$, а изменение энтропии
+$\Delta S = k_B \ln N$, где $N$ --- число атомов в решетке. Тогда изменение свободной энергии
+\begin{equation}
+    \Delta F = 4J - k_B T \ln N < 0 \text{ при }N \to \infty,
+\end{equation}
+то есть для системы неупорядоченное состояние более выгодно.
+
+Теперь рассмотрим двумерный случай. При введении домена в кристаллическую решетку изменение энергии системы пропорционально периметру домена и может быть записано как
+$\Delta E = 4J \cdot \varepsilon N^2, \quad 0 < \varepsilon < 1$. Возможное число доменов можно оценить как  $3^{\varepsilon N^2}$. Тогда изменение энергии
+\begin{equation}
+    \Delta F = 4J \cdot \varepsilon N^2 - k_B T \ln (N^2 3^{\varepsilon N^2}).
+\end{equation}
+Отсюда можно получить оценку на точку Кюри $T_C$:
+\begin{equation}
+    T_C \sim \dfrac{J}{k_B}.
+\end{equation}
+\chapter{2. Метод Монте-Карло}
+\section{2.1. Описание метода}
+Для системы из $N$ спинов число возможных состояний равно $2^N$, поэтому
+для моделирования систем с достаточно большим $N$ необходимо использовать статистические методы.
+
+В методе Монте-Карло система рассматривается в состоянии термодинамического равновесия при
+определенной температуре $T$. В ходе обмена энергией с окружающей средой, энергия будет
+флуктуировать около равновесного состояния, а средняя энергия одной частицы пропорциональна $T$.
+Тогда для подсчета термодинамических характеристик системы можно будет посчитать ее характеристики для реализованных состояний,
+а далее усреднить получившиеся значения.
+\section{2.2. Алгоритм Метрополиса}
+Описание алгоритма, используемого для моделирования кристаллической решетки ферромагнетика:
+\begin{enumerate}
+    \item Случайным образом выбирается начальная конфигурация из $N$ спинов $\alpha_0$;
+    \item На $k$-ом шаге меняем направление одного случайно выбранного спина и считаем изменение энергии $dE$;
+    \item Если $dE < 0$, то новое состояение $\alpha_k$ принимается с вероятностью $1$. 
+    Если $dE > 0$, то принимаем новое состояние с вероятностью $P = e^{\frac{-dE}{k_B T}}$;
+    \item Повторяем шаги $2-4$, принимая $\alpha_k$ в качестве нового исходного состояния.
+\end{enumerate}
+\end{document}
