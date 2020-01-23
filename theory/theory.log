@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.1.19)  23 JAN 2020 15:20
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.1.19)  23 JAN 2020 22:25
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**/Users/nik/Documents/GitHub/metropolis-mc/theory/theory
+**/Users/nik/Documents/GitHub/metropolis-mc/theory/theory.tex
 (/Users/nik/Documents/GitHub/metropolis-mc/theory/theory.tex
 LaTeX2e <2018-04-01> patch level 2
 Babel <3.18> and hyphenation patterns for 84 language(s) loaded.
@@ -626,8 +626,7 @@ LaTeX Info: Redefining \cite on input line 694.
 \c@problem=\count182
 \c@sense=\count183
 \c@remark=\count184
-
-No file theory.aux.
+ (/Users/nik/Documents/GitHub/metropolis-mc/theory/theory.aux)
 \openout1 = `theory.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 74.
@@ -644,6 +643,7 @@ LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 74.
 LaTeX Font Info:    ... okay on input line 74.
 LaTeX Font Info:    Checking defaults for T2A/cmr/m/n on input line 74.
 LaTeX Font Info:    ... okay on input line 74.
+
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
@@ -764,53 +764,49 @@ Overfull \hbox (12.19806pt too wide) in paragraph at lines 128--130
 <img/markov_chain.png, id=31, 513.92pt x 203.76125pt>
 File: img/markov_chain.png Graphic file (type png)
 <use img/markov_chain.png>
-Package pdftex.def Info: img/markov_chain.png  used on input line 160.
+Package pdftex.def Info: img/markov_chain.png  used on input line 161.
 (pdftex.def)             Requested size: 256.95937pt x 101.88037pt.
 
-Overfull \hbox (11.81885pt too wide) in paragraph at lines 168--170
+Overfull \hbox (11.81885pt too wide) in paragraph at lines 169--171
 []\T2A/cmr/m/n/12 Давайте до-ка-жем, что при вы-бо-ре $\OML/cmm/m/it/12 ^^Y\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 a\OT1/cmr/m/n/12 ) = [] [] []$ \T2A/cmr/m/n/12 усло-вие $\OT1/cmr/m/n/12 (2\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 1)$ \T2A/cmr/m/n/12 вы-пол-не-но. Итак, пусть 
  []
 
-[4 <./img/markov_chain.png (PNG copy)>] [5]
+[4 </Users/nik/Documents/GitHub/metropolis-mc/theory/img/markov_chain.png (PNG copy)>] [5]
 {\cyrillictext \CYRG \cyrl \cyra \cyrv \cyra } 3.
 <img/low_t.png, id=38, 702.625pt x 702.625pt>
 File: img/low_t.png Graphic file (type png)
 <use img/low_t.png>
-Package pdftex.def Info: img/low_t.png  used on input line 212.
+Package pdftex.def Info: img/low_t.png  used on input line 213.
 (pdftex.def)             Requested size: 210.78912pt x 210.78912pt.
 <img/high_t.png, id=39, 702.625pt x 702.625pt>
 File: img/high_t.png Graphic file (type png)
 <use img/high_t.png>
-Package pdftex.def Info: img/high_t.png  used on input line 217.
+Package pdftex.def Info: img/high_t.png  used on input line 218.
 (pdftex.def)             Requested size: 210.78912pt x 210.78912pt.
 <img/temperature.png, id=40, 1077.02374pt x 678.535pt>
 File: img/temperature.png Graphic file (type png)
 <use img/temperature.png>
-Package pdftex.def Info: img/temperature.png  used on input line 223.
+Package pdftex.def Info: img/temperature.png  used on input line 224.
 (pdftex.def)             Requested size: 430.80186pt x 271.40918pt.
 <img/fluctuations.png, id=42, 746.79pt x 514.92375pt>
 File: img/fluctuations.png Graphic file (type png)
 <use img/fluctuations.png>
-Package pdftex.def Info: img/fluctuations.png  used on input line 229.
+Package pdftex.def Info: img/fluctuations.png  used on input line 230.
 (pdftex.def)             Requested size: 298.7107pt x 205.96585pt.
 [6
 
- <./img/low_t.png (PNG copy)> <./img/high_t.png (PNG copy)>] [7 <./img/temperature.png> <./img/fluctuations.png>] (./theory.aux)
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
- )
+ </Users/nik/Documents/GitHub/metropolis-mc/theory/img/low_t.png (PNG copy)> </Users/nik/Documents/GitHub/metropolis-mc/theory/img/high_t.png (PNG copy)>] [7 </Users/nik/Documents/GitHub/metropolis-mc/theory/img/temperature.png> </Users/nik/Documents/GitHub/metropolis-mc/theory/img/fluctuations.png>] (/Users/nik/Documents/GitHub/metropolis-mc/theory/theory.aux) )
 (\end occurred when \ifx on line 42 was incomplete) 
 Here is how much of TeX's memory you used:
- 13282 strings out of 492649
- 217539 string characters out of 6129622
- 278431 words of memory out of 5000000
+ 13284 strings out of 492649
+ 217851 string characters out of 6129622
+ 278459 words of memory out of 5000000
  16868 multiletter control sequences out of 15000+600000
  28547 words of font info for 79 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,10n,58p,833b,354s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 41i,10n,58p,846b,354s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t2a.enc}</usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfbx1728.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfbx2488.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm2074.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfti1200.pfb>
-Output written on theory.pdf (8 pages, 402542 bytes).
+Output written on /Users/nik/Documents/GitHub/metropolis-mc/theory/theory.pdf (8 pages, 402508 bytes).
 PDF statistics:
  104 PDF objects out of 1000 (max. 8388607)
  70 compressed objects within 1 object stream
